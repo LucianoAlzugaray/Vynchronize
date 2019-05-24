@@ -1,7 +1,12 @@
-var express = require('express');
-var app = express();
-var server = require('http').createServer(app);
-var io = require('socket.io').listen(server);
+import express from "express";
+import http_moduleObject from "http";
+import http from "http";
+import socketio_moduleObject from "socket.io";
+import async from "async";
+export { express };
+export var app = express();
+export var server = http_moduleObject.createServer(app);
+export var io = socketio_moduleObject.listen(server);
 users = [];
 connections = [];
 rooms = [];
@@ -12,7 +17,7 @@ YT3_API_KEY = process.env.YT3_API_KEY
 DM_API_KEY = process.env.DM_API_KEY
 
 // Set given room for url parameter
-var given_room = ""
+export var given_room = "";
 
 app.use(express.static(__dirname + '/'));
 
@@ -48,7 +53,7 @@ io.on('connection', function(socket) {
    io.sockets.in("room-"+roomno).emit('connectToRoom', "You are in room no. "+roomno);
 })*/
 
-var roomno = 1;
+export var roomno = 1;
 
 io.sockets.on('connection', function(socket) {
     // Connect Socket
@@ -867,9 +872,6 @@ io.sockets.on('connection', function(socket) {
     //------------------------------------------------------------------------------
     // Async get current time
     socket.on('auto sync', function(data) {
-        var async = require("async");
-        var http = require("http");
-
         //Delay of 5 seconds
         var delay = 5000;
 

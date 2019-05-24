@@ -1,3 +1,4 @@
+export var currTime;
 var dailyPlayer
 
 setTimeout(function() {

@@ -1,10 +1,10 @@
-var io = require('../../server').io
-var socket = require('../../server').socket
+import { io } from "../../server";
+import * as socket from "../../server";
 
 // CURRENTLY NOT BEING USED
 // SHOULD REFACTOR NODE AND SOCKET STUFF IN FUTURE!
 
-module.exports = {
+export default {
 
         // Update all users
         // function updateUsernames() {
@@ -28,4 +28,4 @@ module.exports = {
             });
         }
 
-}
+};;
