@@ -4,7 +4,13 @@
   "description": "Video synchronization app",
   "main": "server.js",
   "scripts": {
+    "postinstall": "link-module-alias",
+    "dev": "nodemon server.js",
     "test": "jshint test.js"
+  },
+  "_moduleAliases": {
+    "~modules": "./modules",
+    "~client": "./client"
   },
   "repository": {
     "type": "git",
@@ -14,7 +20,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "*",
+    "link-module-alias": "^1.2.0",
     "lodash": "^4.17.11",
+    "morgan": "^1.9.1",
+    "rc": "^1.2.8",
     "socket.io": "*"
   },
   "bugs": {
@@ -22,6 +31,7 @@
   },
   "homepage": "https://github.com/kyle8998/Vynchronize#readme",
   "devDependencies": {
+    "nodemon": "^1.19.1",
     "jshint": "^2.9.5"
   }
 }

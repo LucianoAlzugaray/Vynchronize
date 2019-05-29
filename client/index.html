@@ -415,6 +415,14 @@
         // Don't allow trailing or leading whitespace!
         var nosymbols = new RegExp("^(([a-zA-Z0-9_-][a-zA-Z0-9 _-]*[a-zA-Z0-9_-])|([a-zA-Z0-9_-]*))$");
 
+        var currentRoomId = window.location.pathname.split('/')[1];
+
+            // Ensure no valid id too
+        if (currentRoomId != "" && nosymbols.test(currentRoomId)) {
+            document.getElementById('roomnum').value = currentRoomId
+            console.log("You are joining room: " + currentRoomId)
+        }
+        
         // Chat stuff
         $(function() {
             var $messageForm = $('#messageForm');
@@ -668,20 +676,6 @@
                     scrollLeft: "-=336"
                 }, 750);
             });
-        });
-
-        // set id
-        socket.on('set id', function(data) {
-            // Ensure no valid id too
-            if (data.id != "" && nosymbols.test(data.id)) {
-                document.getElementById('roomnum').value = data.id
-                // Probably should not force it to be readonly
-                // document.getElementById('roomnum').readOnly = true
-                console.log("You are joining room: " + data.id)
-            }
-            // Reset url for next person
-            // Workaround
-            socket.emit('reset url')
         });
 
         function copyInvite() {
